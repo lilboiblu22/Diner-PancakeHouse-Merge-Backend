@@ -24,4 +24,7 @@ public class PancakeHouseController {
     public List<MenuItem> get() {
         return repository.getTheMenu();
     }
+
+    //I had way more here, I was trying to rebase and make sure my master branch had everything it needed for the inclass assignment
+    //Then It rebased my part 3 and I lost all progress even though I was working on it
 }
