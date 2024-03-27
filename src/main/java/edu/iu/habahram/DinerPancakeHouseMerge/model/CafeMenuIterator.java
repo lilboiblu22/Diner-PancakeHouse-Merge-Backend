@@ -20,12 +20,21 @@ public class CafeMenuIterator implements Iterator<MenuItem>{
 
     @Override
     public MenuItem next() {
-
+        return menuItems.remove(0);
     }
 
     @Override
     public void remove() {
-
+        if (menuItems.isEmpty()) {
+            throw new IllegalStateException
+                    ("You can't remove an item until you've done at least one next()");
+        }
+        if (menuItems != null) {
+            for (int i = 0; i < (menuItems.size()-1); i++) {
+                menuItems.put(i, menuItems.get(i+1));
+            }
+            menuItems.remove(menuItems.size()-1);
+        }
     }
 
     public Iterator<MenuItem> createIterator() {
