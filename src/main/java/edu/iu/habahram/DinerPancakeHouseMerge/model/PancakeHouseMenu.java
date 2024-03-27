@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class PancakeHouseMenu implements Menu {
+public class PancakeHouseMenu extends Menu {
     List<MenuItem> menuItems;
 
     public PancakeHouseMenu() {
+        super("PANCAKE HOUSE MENU", "Breakfast");
         menuItems = new ArrayList<MenuItem>();
 
         addItem("K&B's Pancake Breakfast",
@@ -29,6 +30,10 @@ public class PancakeHouseMenu implements Menu {
                 "Waffles with your choice of blueberries or strawberries",
                 true,
                 3.59);
+    }
+
+    public PancakeHouseMenu(String pancakeHouseMenu, String breakfast) {
+        super(pancakeHouseMenu, breakfast);
     }
 
     public void addItem(String name, String description,

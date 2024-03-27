@@ -1,7 +1,6 @@
 package edu.iu.habahram.DinerPancakeHouseMerge.controllers;
 
 import edu.iu.habahram.DinerPancakeHouseMerge.model.MenuItem;
-import edu.iu.habahram.DinerPancakeHouseMerge.repository.DinerRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
