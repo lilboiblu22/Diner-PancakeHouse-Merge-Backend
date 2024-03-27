@@ -1,8 +1,10 @@
 package edu.iu.habahram.DinerPancakeHouseMerge.model;
 
-public interface Iterator {
+public interface Iterator<MenuItem> {
 
-    boolean hasNex();
+    boolean hasNext();
 
     MenuItem next();
+
+    void remove();
 }
