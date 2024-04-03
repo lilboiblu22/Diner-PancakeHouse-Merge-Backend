@@ -4,6 +4,7 @@ import edu.iu.habahram.DinerPancakeHouseMerge.model.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 @Repository
@@ -13,12 +14,13 @@ public class MergerRepository {
         allMenus.add(new DinerMenu("DINER MENU", "Lunch"));
         allMenus.add(new PancakeHouseMenu("PANCAKE HOUSE MENU", "Breakfast"));
         allMenus.add(new CafeMenu("CAFE MENU", "Dinner"));
-        MenuItem[] menuItems = allMenus.getItems();
-        List<MenuItemRecord> records = Arrays.stream(menuItems)
-                .map(x -> new MenuItemRecord(x.getName(),
-                        x.getDescription(),
-                        x.isVegetarian(),
-                        x.getPrice())).toList();
-        return records;
+        HashMap<String, MenuItem> menuItems = allMenus.getItems();
+        MenuItemRecord[] records = new MenuItemRecord[menuItems.size()];
+        int i = 0;
+        for (MenuItem menuItem : menuItems.values()) {
+            records[i] = new MenuItemRecord(menuItem.getName(), menuItem.getDescription(), menuItem.isVegetarian(), menuItem.getPrice());
+            i++;
+        }
+        return Arrays.asList(records);
     }
 }

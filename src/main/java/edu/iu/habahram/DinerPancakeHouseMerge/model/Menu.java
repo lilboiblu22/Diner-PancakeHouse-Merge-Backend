@@ -39,11 +39,12 @@ public class Menu extends MenuComponent{
         Iterator<MenuComponent> iterator = (Iterator<MenuComponent>) menuComponents.iterator();
         while (iterator.hasNext()) {
             MenuComponent menuComponent = iterator.next();
-            MenuItem[] items = menuComponent.getItems();
-            for (MenuItem item : items) {
-                menuItemList.add(item);
-            }
+            menuItemList.addAll(menuComponent.getItems().values());
         }
-        return menuItemList.toArray(new MenuItem[0]);
+        HashMap<String, MenuItem> menuItems = new HashMap<String, MenuItem>();
+        for (MenuItem menuItem : menuItemList) {
+            menuItems.put(menuItem.getName(), menuItem);
+        }
+        return menuItems;
     }
 }

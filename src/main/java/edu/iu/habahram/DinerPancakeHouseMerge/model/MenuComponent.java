@@ -29,4 +29,12 @@ public abstract class MenuComponent {
     public HashMap<String, MenuItem> getItems() {
         throw new UnsupportedOperationException();
     }
+
+    public Iterator<MenuComponent> createIterator(){
+        throw new UnsupportedOperationException();
+    }
+
+    public MenuComponent add(MenuComponent menuComponent, String name, String description, boolean vegetarian, double price) {
+        throw new UnsupportedOperationException();
+    }
 }

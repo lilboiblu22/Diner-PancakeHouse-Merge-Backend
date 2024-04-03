@@ -40,6 +40,11 @@ public class MenuItem extends MenuComponent{
     public HashMap<String, MenuItem> getItems() {
         MenuItem[] items = new MenuItem[1];
         items[0] = this;
-        return items;
+        HashMap<String, MenuItem> menuItems = new HashMap<String, MenuItem>();
+
+        for (MenuItem menuItem : items) {
+            menuItems.put(menuItem.getName(), menuItem);
+        }
+        return menuItems;
     }
 }
