@@ -1,12 +1,14 @@
 package edu.iu.habahram.DinerPancakeHouseMerge.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class PancakeHouseMenu {
+public class PancakeHouseMenu extends Menu {
     List<MenuItem> menuItems;
 
     public PancakeHouseMenu() {
+        super("PANCAKE HOUSE MENU", "Breakfast");
         menuItems = new ArrayList<MenuItem>();
 
         addItem("K&B's Pancake Breakfast",
@@ -30,6 +32,10 @@ public class PancakeHouseMenu {
                 3.59);
     }
 
+    public PancakeHouseMenu(String pancakeHouseMenu, String breakfast) {
+        super(pancakeHouseMenu, breakfast);
+    }
+
     public void addItem(String name, String description,
                         boolean vegetarian, double price)
     {
@@ -49,6 +55,11 @@ public class PancakeHouseMenu {
             stringBuilder.append(item.toString());
         }
         return  stringBuilder.toString();
+    }
+
+    public Iterator<MenuItem> createIterator() {
+
+        return menuItems.iterator();
     }
 
     // other menu methods here

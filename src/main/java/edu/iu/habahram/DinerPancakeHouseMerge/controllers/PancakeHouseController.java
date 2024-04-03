@@ -1,8 +1,6 @@
 package edu.iu.habahram.DinerPancakeHouseMerge.controllers;
 
 import edu.iu.habahram.DinerPancakeHouseMerge.model.MenuItem;
-import edu.iu.habahram.DinerPancakeHouseMerge.repository.DinerRepository;
-import edu.iu.habahram.DinerPancakeHouseMerge.repository.PancakeHouseRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,4 +22,7 @@ public class PancakeHouseController {
     public List<MenuItem> get() {
         return repository.getTheMenu();
     }
+
+    //I had way more here, I was trying to rebase and make sure my master branch had everything it needed for the inclass assignment
+    //Then It rebased my part 3 and I lost all progress even though I was working on it
 }

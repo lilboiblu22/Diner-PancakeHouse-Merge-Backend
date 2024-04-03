@@ -1,6 +1,8 @@
 package edu.iu.habahram.DinerPancakeHouseMerge.model;
 
-public class MenuItem {
+import java.util.HashMap;
+
+public class MenuItem extends MenuComponent{
     String name;
     String description;
     boolean vegetarian;
@@ -34,5 +36,15 @@ public class MenuItem {
     }
     public String toString() {
         return (name + ", $" + price + "\n   " + description);
+    }
+    public HashMap<String, MenuItem> getItems() {
+        MenuItem[] items = new MenuItem[1];
+        items[0] = this;
+        HashMap<String, MenuItem> menuItems = new HashMap<String, MenuItem>();
+
+        for (MenuItem menuItem : items) {
+            menuItems.put(menuItem.getName(), menuItem);
+        }
+        return menuItems;
     }
 }
