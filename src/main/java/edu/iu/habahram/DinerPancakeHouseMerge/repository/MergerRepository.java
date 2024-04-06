@@ -10,9 +10,9 @@ import java.util.Iterator;
 public class MergerRepository {
     public  List<MenuItemRecord> getTheMenuItems() {
         MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0);
-        allMenus.add(new DinerMenu("DINER MENU", "Lunch"));
-        allMenus.add(new PancakeHouseMenu("PANCAKE HOUSE MENU", "Breakfast"));
-        allMenus.add(new CafeMenu("CAFE MENU", "Dinner"));
+        allMenus.add(new DinerMenu());
+        allMenus.add(new PancakeHouseMenu());
+        allMenus.add(new CafeMenu());
         MenuItem[] menuItems = allMenus.getItems();
         List<MenuItemRecord> records = Arrays.stream(menuItems)
                 .map(x -> new MenuItemRecord(x.getName(),
@@ -24,9 +24,9 @@ public class MergerRepository {
 
 public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
         MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0);
-        allMenus.add(new DinerMenu("DINER MENU", "Lunch"));
-        allMenus.add(new PancakeHouseMenu("PANCAKE HOUSE MENU", "Breakfast"));
-        allMenus.add(new CafeMenu("CAFE MENU", "Dinner"));
+        allMenus.add(new DinerMenu());
+        allMenus.add(new PancakeHouseMenu());
+        allMenus.add(new CafeMenu());
 
         CompositeIterator iterator = new CompositeIterator((Iterator<MenuItem>) allMenus.createIterator());
         List<MenuItemRecord> records = new ArrayList<>();
@@ -45,9 +45,9 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
 
     public List<MenuItemRecord> getBreakfastMenuItemsWithIterator() {
         MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0);
-        allMenus.add(new DinerMenu("DINER MENU", "Lunch"));
-        allMenus.add(new PancakeHouseMenu("PANCAKE HOUSE MENU", "Breakfast"));
-        allMenus.add(new CafeMenu("CAFE MENU", "Dinner"));
+        allMenus.add(new DinerMenu());
+        allMenus.add(new PancakeHouseMenu());
+        allMenus.add(new CafeMenu());
 
         CompositeIterator iterator = new CompositeIterator((Iterator<MenuItem>) allMenus.createIterator());
         List<MenuItemRecord> records = new ArrayList<>();
@@ -67,9 +67,9 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
 
     public List<MenuItemRecord> getLunchMenuItemsWithIterator() {
         MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0);
-        allMenus.add(new DinerMenu("DINER MENU", "Lunch"));
-        allMenus.add(new PancakeHouseMenu("PANCAKE HOUSE MENU", "Breakfast"));
-        allMenus.add(new CafeMenu("CAFE MENU", "Dinner"));
+        allMenus.add(new DinerMenu());
+        allMenus.add(new PancakeHouseMenu());
+        allMenus.add(new CafeMenu());
 
         CompositeIterator iterator = new CompositeIterator((Iterator<MenuItem>) allMenus.createIterator());
         List<MenuItemRecord> records = new ArrayList<>();
@@ -89,9 +89,9 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
 
     public List<MenuItemRecord> getDinnerMenuItemsWithIterator() {
         MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0);
-        allMenus.add(new DinerMenu("DINER MENU", "Lunch"));
-        allMenus.add(new PancakeHouseMenu("PANCAKE HOUSE MENU", "Breakfast"));
-        allMenus.add(new CafeMenu("CAFE MENU", "Dinner"));
+        allMenus.add(new DinerMenu());
+        allMenus.add(new PancakeHouseMenu());
+        allMenus.add(new CafeMenu());
 
         CompositeIterator iterator = new CompositeIterator((Iterator<MenuItem>) allMenus.createIterator());
         List<MenuItemRecord> records = new ArrayList<>();
