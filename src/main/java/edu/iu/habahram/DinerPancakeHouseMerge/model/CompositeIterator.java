@@ -5,6 +5,10 @@ public class CompositeIterator implements Iterator<MenuComponent>{
 
     Stack<Iterator<MenuComponent>> stack = new Stack<Iterator<MenuComponent>>();
 
+    public CompositeIterator(java.util.Iterator<MenuItem> iterator) {
+        stack.push((Iterator<MenuComponent>) iterator);
+    }
+
 
     @Override
     public boolean hasNext() {

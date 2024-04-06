@@ -4,40 +4,43 @@ import java.util.HashMap;
 
 public class CafeMenuIterator implements Iterator<MenuItem>{
 
-    HashMap<String, MenuItem> menuItems;
+    MenuItem[] menuItems;
+    int position = 0;
 
-    public CafeMenuIterator(MenuItem[] items) {
-       this.menuItems = new HashMap<>();
-         for(MenuItem item: items) {
-              menuItems.put(item.getName(), item);
-         }
+    public CafeMenuIterator(MenuItem[] menuItems) {
+        this.menuItems = menuItems;
     }
 
     @Override
     public boolean hasNext() {
-        return !menuItems.isEmpty();
+        if(position >= menuItems.length || (menuItems[position] == null)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public MenuItem next() {
-        return menuItems.remove(0);
+        MenuItem menuItem = menuItems[position];
+        position += 1;
+        return menuItem;
     }
 
     @Override
     public void remove() {
-        if (menuItems.isEmpty()) {
+        if (position <= 0) {
             throw new IllegalStateException
                     ("You can't remove an item until you've done at least one next()");
         }
-        if (menuItems != null) {
-            for (int i = 0; i < (menuItems.size()-1); i++) {
-                menuItems.put(i, menuItems.get(i+1));
+        if (menuItems[position-1] != null) {
+            for (int i = position-1; i < (menuItems.length-1); i++) {
+                menuItems[i] = menuItems[i+1];
             }
-            menuItems.remove(menuItems.size()-1);
+            menuItems[menuItems.length-1] = null;
         }
     }
 
     public Iterator<MenuItem> createIterator() {
-        return (Iterator<MenuItem>) menuItems.values().iterator();
+        return new CafeMenuIterator(menuItems);
     }
 }

@@ -1,7 +1,5 @@
 package edu.iu.habahram.DinerPancakeHouseMerge.model;
 
-import java.util.HashMap;
-
 public abstract class MenuComponent {
     public void add(MenuComponent menuComponent) {
         throw new UnsupportedOperationException();
@@ -26,7 +24,7 @@ public abstract class MenuComponent {
         throw new UnsupportedOperationException();
     }
 
-    public HashMap<String, MenuItem> getItems() {
+    public MenuItem[] getItems() {
         throw new UnsupportedOperationException();
     }
 
@@ -36,5 +34,15 @@ public abstract class MenuComponent {
 
     public MenuComponent add(MenuComponent menuComponent, String name, String description, boolean vegetarian, double price) {
         throw new UnsupportedOperationException();
+    }
+
+    public void add(CafeMenu cafeMenu) {
+    }
+
+    public void add(PancakeHouseMenu pancakeHouseMenu) {
+    }
+
+    public void add(DinerMenu dinerMenu) {
+
     }
 }

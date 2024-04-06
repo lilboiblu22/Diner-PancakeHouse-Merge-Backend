@@ -36,4 +36,8 @@ public class DinerMenuIterator implements Iterator<MenuItem>{
             menuItems[menuItems.length-1] = null;
         }
     }
+
+    public Iterator<MenuItem> createIterator() {
+        return new DinerMenuIterator(menuItems);
+    }
 }

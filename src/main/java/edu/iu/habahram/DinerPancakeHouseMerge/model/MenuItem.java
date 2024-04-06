@@ -34,17 +34,14 @@ public class MenuItem extends MenuComponent{
     public boolean isVegetarian() {
         return vegetarian;
     }
+
     public String toString() {
         return (name + ", $" + price + "\n   " + description);
     }
-    public HashMap<String, MenuItem> getItems() {
+
+    public MenuItem[] getItems(){
         MenuItem[] items = new MenuItem[1];
         items[0] = this;
-        HashMap<String, MenuItem> menuItems = new HashMap<String, MenuItem>();
-
-        for (MenuItem menuItem : items) {
-            menuItems.put(menuItem.getName(), menuItem);
-        }
-        return menuItems;
+        return items;
     }
 }
