@@ -7,16 +7,19 @@ public class MenuItem extends MenuComponent{
     String description;
     boolean vegetarian;
     double price;
+    String mealType;
 
     public MenuItem(String name,
                     String description,
                     boolean vegetarian,
-                    double price)
+                    double price,
+                    String mealType)
     {
         this.name = name;
         this.description = description;
         this.vegetarian = vegetarian;
         this.price = price;
+        this.mealType = mealType;
     }
 
     public String getName() {
@@ -33,6 +36,10 @@ public class MenuItem extends MenuComponent{
 
     public boolean isVegetarian() {
         return vegetarian;
+    }
+
+    public String getMealType() {
+        return mealType;
     }
 
     public String toString() {

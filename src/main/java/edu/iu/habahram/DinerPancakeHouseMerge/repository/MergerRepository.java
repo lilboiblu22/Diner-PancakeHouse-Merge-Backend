@@ -9,7 +9,7 @@ import java.util.Iterator;
 @Repository
 public class MergerRepository {
     public  List<MenuItemRecord> getTheMenuItems() {
-        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0);
+        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0, "All");
         allMenus.add(new DinerMenu());
         allMenus.add(new PancakeHouseMenu());
         allMenus.add(new CafeMenu());
@@ -28,7 +28,7 @@ public class MergerRepository {
     }
 
 public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
-        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0);
+        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0, "All");
         allMenus.add(new DinerMenu());
         allMenus.add(new PancakeHouseMenu());
         allMenus.add(new CafeMenu());
@@ -47,9 +47,9 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
         }
         return records;
     }
-
+    // Get breakfast menu items
     public List<MenuItemRecord> getBreakfastMenuItemsWithIterator() {
-        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined", false, 0.0);
+        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined", false, 0.0, "All");
         allMenus.add(new DinerMenu());
         allMenus.add(new PancakeHouseMenu());
         allMenus.add(new CafeMenu());
@@ -61,7 +61,7 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
             MenuComponent component = iterator.next();
             if (component instanceof MenuItem) {
                 MenuItem item = (MenuItem) component;
-                if (item.getDescription().equals("Breakfast")) {
+                if (item.getMealType().equals("Breakfast")) {
                     records.add(new MenuItemRecord(item.getName(), item.getDescription(), item.isVegetarian(), item.getPrice()));
                 }
             }
@@ -70,7 +70,7 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
     }
 
     public List<MenuItemRecord> getLunchMenuItemsWithIterator() {
-        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0);
+        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0, "All");
         allMenus.add(new DinerMenu());
         allMenus.add(new PancakeHouseMenu());
         allMenus.add(new CafeMenu());
@@ -82,17 +82,16 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
             MenuComponent component = iterator.next();
             if (component instanceof MenuItem) {
                 MenuItem item = (MenuItem) component;
-                if (item.getDescription().equals("Lunch")) {
+                if (item.getMealType().equals("Lunch")) {
                     records.add(new MenuItemRecord(item.getName(), item.getDescription(), item.isVegetarian(), item.getPrice()));
                 }
             }
         }
-
         return records;
     }
 
     public List<MenuItemRecord> getDinnerMenuItemsWithIterator() {
-        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0);
+        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0, "All");
         allMenus.add(new DinerMenu());
         allMenus.add(new PancakeHouseMenu());
         allMenus.add(new CafeMenu());
@@ -104,14 +103,11 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
             MenuComponent component = iterator.next();
             if (component instanceof MenuItem) {
                 MenuItem item = (MenuItem) component;
-                if (item.getDescription().equals("Dinner")) {
+                if (item.getMealType().equals("Dinner")) {
                     records.add(new MenuItemRecord(item.getName(), item.getDescription(), item.isVegetarian(), item.getPrice()));
                 }
             }
         }
-
         return records;
     }
-
-
 }

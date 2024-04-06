@@ -17,22 +17,26 @@ public class PancakeHouseMenu implements Menu {
         addItem("K&B's Pancake Breakfast",
                 "Pancakes with scrambled eggs and toast",
                 true,
-                2.99);
+                2.99,
+                "Breakfast");
 
         addItem("Regular Pancake Breakfast",
                 "Pancakes with fried eggs, sausage",
                 false,
-                2.99);
+                2.99,
+                "Breakfast");
 
         addItem("Blueberry Pancakes",
                 "Pancakes made with fresh blueberries",
                 true,
-                3.49);
+                3.49,
+                "Breakfast");
 
         addItem("Waffles",
                 "Waffles with your choice of blueberries or strawberries",
                 true,
-                3.59);
+                3.59,
+                "Breakfast");
     }
 
     public PancakeHouseMenu(String pancakeHouseMenu, String breakfast) {
@@ -41,8 +45,8 @@ public class PancakeHouseMenu implements Menu {
     }
 
 
-    public void addItem(String name, String description, boolean vegetarian, double price) {
-        MenuItem menuItem = new MenuItem(name, description, vegetarian, price);
+    public void addItem(String name, String description, boolean vegetarian, double price, String mealType) {
+        MenuItem menuItem = new MenuItem(name, description, vegetarian, price, mealType);
         if (numberOfItems >= MAX_ITEMS) {
             System.err.println("Sorry, menu is full! Can't add item to menu");
         } else {
