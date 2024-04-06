@@ -1,11 +1,12 @@
 package edu.iu.habahram.DinerPancakeHouseMerge.repository;
 
 import edu.iu.habahram.DinerPancakeHouseMerge.model.*;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
 import java.util.Iterator;
-
+@Component
 @Repository
 public class MergerRepository {
     public  List<MenuItemRecord> getTheMenuItems() {
@@ -72,7 +73,7 @@ public class MergerRepository {
         return records;
 }
     //Following methods are to find vegetarian menu items in each menu
-    private Collection<MenuItemRecord> getVegetarianCafeMenuItems(CafeMenu cafeMenu) {
+    public Collection<MenuItemRecord> getVegetarianCafeMenuItems(CafeMenu cafeMenu) {
         List<MenuItemRecord> records = new ArrayList<>();
         Iterator<MenuItem> iterator = cafeMenu.createIterator();
         while (iterator.hasNext()) {
@@ -84,7 +85,7 @@ public class MergerRepository {
         return records;
     }
 
-    private Collection<MenuItemRecord> getVegetarianDinerMenuItems(DinerMenu dinerMenu) {
+    public Collection<MenuItemRecord> getVegetarianDinerMenuItems(DinerMenu dinerMenu) {
         List<MenuItemRecord> records = new ArrayList<>();
         Iterator<MenuItem> iterator = dinerMenu.createIterator();
         while (iterator.hasNext()) {
@@ -96,7 +97,7 @@ public class MergerRepository {
         return records;
     }
 
-    private Collection<MenuItemRecord> getVegetarianPancakeHouseMenuItems(PancakeHouseMenu pancakeHouseMenu) {
+    public Collection<MenuItemRecord> getVegetarianPancakeHouseMenuItems(PancakeHouseMenu pancakeHouseMenu) {
         List<MenuItemRecord> records = new ArrayList<>();
         Iterator<MenuItem> iterator = pancakeHouseMenu.createIterator();
         while (iterator.hasNext()) {
