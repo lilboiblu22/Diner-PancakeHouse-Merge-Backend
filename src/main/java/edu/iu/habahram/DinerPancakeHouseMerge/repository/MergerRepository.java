@@ -13,12 +13,17 @@ public class MergerRepository {
         allMenus.add(new DinerMenu());
         allMenus.add(new PancakeHouseMenu());
         allMenus.add(new CafeMenu());
-        MenuItem[] menuItems = allMenus.getItems();
-        List<MenuItemRecord> records = Arrays.stream(menuItems)
-                .map(x -> new MenuItemRecord(x.getName(),
-                        x.getDescription(),
-                        x.isVegetarian(),
-                        x.getPrice())).toList();
+
+        CompositeIterator iterator = new CompositeIterator((Iterator<MenuItem>) allMenus.createIterator());
+        List<MenuItemRecord> records = new ArrayList<>();
+
+        while (iterator.hasNext()) {
+            MenuComponent component = iterator.next();
+            if (component instanceof MenuItem) {
+                MenuItem item = (MenuItem) component;
+                records.add(new MenuItemRecord(item.getName(), item.getDescription(), item.isVegetarian(), item.getPrice()));
+            }
+        }
         return records;
     }
 
@@ -44,7 +49,7 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
     }
 
     public List<MenuItemRecord> getBreakfastMenuItemsWithIterator() {
-        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0);
+        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined", false, 0.0);
         allMenus.add(new DinerMenu());
         allMenus.add(new PancakeHouseMenu());
         allMenus.add(new CafeMenu());
@@ -61,7 +66,6 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
                 }
             }
         }
-
         return records;
     }
 
