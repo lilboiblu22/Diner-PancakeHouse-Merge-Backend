@@ -61,7 +61,7 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
             MenuComponent component = iterator.next();
             if (component instanceof MenuItem) {
                 MenuItem item = (MenuItem) component;
-                if (item.getDescription().equals("Breakfast")) {
+                if (item.getName() == "K&B's Pancake Breakfast" || item.getName() == "Regular Pancake Breakfast" || item.getName() == "Blueberry Pancakes" || item.getName() == "Waffles"){
                     records.add(new MenuItemRecord(item.getName(), item.getDescription(), item.isVegetarian(), item.getPrice()));
                 }
             }
@@ -82,12 +82,11 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
             MenuComponent component = iterator.next();
             if (component instanceof MenuItem) {
                 MenuItem item = (MenuItem) component;
-                if (item.getDescription().equals("Lunch")) {
+                if (item.getName() == "Vegetarian BLT" || item.getName() == "BLT" || item.getName() == "Soup of the day" || item.getName() == "Hotdog" || item.getName() == "Steamed Veggies and Brown Rice" || item.getName() == "Pasta") {
                     records.add(new MenuItemRecord(item.getName(), item.getDescription(), item.isVegetarian(), item.getPrice()));
                 }
             }
         }
-
         return records;
     }
 
@@ -97,6 +96,8 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
         allMenus.add(new PancakeHouseMenu());
         allMenus.add(new CafeMenu());
 
+        //only get the items in cafe menu as they are the only dinner items
+        //don't get it by description as it is not unique
         CompositeIterator iterator = new CompositeIterator((Iterator<MenuItem>) allMenus.createIterator());
         List<MenuItemRecord> records = new ArrayList<>();
 
@@ -104,12 +105,13 @@ public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
             MenuComponent component = iterator.next();
             if (component instanceof MenuItem) {
                 MenuItem item = (MenuItem) component;
-                if (item.getDescription().equals("Dinner")) {
+                if (item.getName() == "Veggie Burger and Air Fries" || item.getName() == "Soup of the day" || item.getName() == "Burrito"){
                     records.add(new MenuItemRecord(item.getName(), item.getDescription(), item.isVegetarian(), item.getPrice()));
                 }
             }
         }
-
         return records;
     }
+
+
 }

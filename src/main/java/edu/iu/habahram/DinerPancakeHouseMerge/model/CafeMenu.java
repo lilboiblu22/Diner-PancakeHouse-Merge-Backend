@@ -43,6 +43,10 @@ public class CafeMenu implements Menu {
         return menuItems;
     }
 
+    public String getDinner() {
+        return dinner;
+    }
+
     @Override
     public Iterator<MenuItem> createIterator() {
         return (Iterator<MenuItem>) new CafeMenuIterator(menuItems);
