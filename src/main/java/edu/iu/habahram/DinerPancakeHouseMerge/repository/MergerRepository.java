@@ -14,10 +14,10 @@ public class MergerRepository {
     MenuItem allMenus;
 
     public MergerRepository() {
-        ArrayList<Menu> allMenus = new ArrayList<>();
-        allMenus.add(new PancakeHouseMenu());
-        allMenus.add(new DinerMenu());
-        allMenus.add(new CafeMenu());
+        ArrayList<MenuItem[]> allMenus = new ArrayList<>();
+        allMenus.add(new PancakeHouseMenu("PANCAKE HOUSE MENU", "Breakfast").getMenuItems());
+        allMenus.add(new DinerMenu("DINER MENU", "Lunch").getMenuItems());
+        allMenus.add(new CafeMenu("CAFE MENU", "Dinner").getItems());
     }
 
     public  List<MenuItemRecord> getTheMenuItems() {

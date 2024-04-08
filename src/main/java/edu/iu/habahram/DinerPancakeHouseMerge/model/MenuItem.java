@@ -15,7 +15,6 @@ public class MenuItem extends MenuComponent{
         this.description = description;
         this.vegetarian = vegetarian;
         this.price = price;
-
     }
 
     public String getName() {
