@@ -15,9 +15,9 @@ public class MergerRepository {
 
     public MergerRepository() {
         allMenus = new ArrayList<>();
-        MenuItem[] pancakeHouseMenuItems = new PancakeHouseMenu("PANCAKE HOUSE MENU", "Breakfast").getMenuItems();
-        MenuItem[] dinerMenuItems = new DinerMenu("DINER MENU", "Lunch").getMenuItems();
-        MenuItem[] cafeMenuItems = new CafeMenu("CAFE MENU", "Dinner").getMenuItems();
+        MenuItem[] pancakeHouseMenuItems = new PancakeHouseMenu().getMenuItems();
+        MenuItem[] dinerMenuItems = new DinerMenu().getMenuItems();
+        MenuItem[] cafeMenuItems = new CafeMenu().getMenuItems();
 
         if (pancakeHouseMenuItems != null) {
             allMenus.add(pancakeHouseMenuItems);
@@ -33,6 +33,7 @@ public class MergerRepository {
     public List<MenuItemRecord> getTheMenuItems() {
         return allMenus.stream()
                 .flatMap(Arrays::stream)
+                .filter(Objects::nonNull)
                 .map(x -> new MenuItemRecord(x.getName(),
                         x.getDescription(),
                         x.isVegetarian(),
