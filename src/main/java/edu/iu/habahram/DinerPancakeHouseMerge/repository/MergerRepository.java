@@ -43,8 +43,9 @@ public class MergerRepository {
     }
 
     public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
-        List<MenuItemRecord> records = allMenus.stream()
+        return allMenus.stream()
                 .flatMap(Arrays::stream)
+                .filter(Objects::nonNull)
                 .filter(MenuItem::isVegetarian)
                 .map(x -> new MenuItemRecord(x.getName(),
                         x.getDescription(),
@@ -52,19 +53,23 @@ public class MergerRepository {
                         x.getPrice()))
                 .sorted(Comparator.comparing(MenuItemRecord::name))
                 .collect(Collectors.toList());
-        return records;
     }
 
     public List<MenuItemRecord> getBreakfastMenuItemsWithIterator() {
-        MenuItem[] menuItems = allMenus.get(0);
-        List<MenuItemRecord> records = Arrays.stream(menuItems)
-                .map(x -> new MenuItemRecord(x.getName(),
-                        x.getDescription(),
-                        x.isVegetarian(),
-                        x.getPrice()))
-                .sorted(Comparator.comparing(MenuItemRecord::name))
-                .collect(Collectors.toList());
-        return records;
+        if (!allMenus.isEmpty() && allMenus.get(0) != null) {
+            MenuItem[] menuItems = allMenus.get(0);
+            return Arrays.stream(menuItems)
+                    .filter(Objects::nonNull)
+                    .map(x -> new MenuItemRecord(x.getName(),
+                            x.getDescription(),
+                            x.isVegetarian(),
+                            x.getPrice()))
+                    .sorted(Comparator.comparing(MenuItemRecord::name))
+                    .collect(Collectors.toList());
+        } else {
+            // handle the case where allMenus is empty or the first item is null
+            return new ArrayList<>();
+        }
     }
 
     public List<MenuItemRecord> getLunchMenuItemsWithIterator() {
