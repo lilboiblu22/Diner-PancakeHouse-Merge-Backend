@@ -14,7 +14,7 @@ public class MergerRepository {
     ArrayList<MenuItem[]> allMenus;
 
     public MergerRepository() {
-        ArrayList<MenuItem[]> allMenus = new ArrayList<>();
+        allMenus = new ArrayList<>();
         allMenus.add(new PancakeHouseMenu("PANCAKE HOUSE MENU", "Breakfast").getMenuItems());
         allMenus.add(new DinerMenu("DINER MENU", "Lunch").getMenuItems());
         allMenus.add(new CafeMenu("CAFE MENU", "Dinner").getItems());
