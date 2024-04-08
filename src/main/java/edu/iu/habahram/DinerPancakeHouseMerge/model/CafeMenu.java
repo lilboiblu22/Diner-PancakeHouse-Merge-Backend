@@ -39,7 +39,7 @@ public class CafeMenu implements Menu {
         }
     }
 
-    public MenuItem[] getItems() {
+    public MenuItem[] getMenuItems() {
         return menuItems;
     }
 

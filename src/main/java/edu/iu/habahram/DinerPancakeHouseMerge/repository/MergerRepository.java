@@ -15,9 +15,19 @@ public class MergerRepository {
 
     public MergerRepository() {
         allMenus = new ArrayList<>();
-        allMenus.add(new PancakeHouseMenu("PANCAKE HOUSE MENU", "Breakfast").getMenuItems());
-        allMenus.add(new DinerMenu("DINER MENU", "Lunch").getMenuItems());
-        allMenus.add(new CafeMenu("CAFE MENU", "Dinner").getItems());
+        MenuItem[] pancakeHouseMenuItems = new PancakeHouseMenu("PANCAKE HOUSE MENU", "Breakfast").getMenuItems();
+        MenuItem[] dinerMenuItems = new DinerMenu("DINER MENU", "Lunch").getMenuItems();
+        MenuItem[] cafeMenuItems = new CafeMenu("CAFE MENU", "Dinner").getMenuItems();
+
+        if (pancakeHouseMenuItems != null) {
+            allMenus.add(pancakeHouseMenuItems);
+        }
+        if (dinerMenuItems != null) {
+            allMenus.add(dinerMenuItems);
+        }
+        if (cafeMenuItems != null) {
+            allMenus.add(cafeMenuItems);
+        }
     }
 
     public List<MenuItemRecord> getTheMenuItems() {
@@ -30,44 +40,53 @@ public class MergerRepository {
                 .sorted(Comparator.comparing(MenuItemRecord::name))
                 .collect(Collectors.toList());
     }
-    /*
+
     public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
-        MenuItem[] menuItems = allMenus.getItems();
-        List<MenuItemRecord> records = Arrays.stream(menuItems)
+        List<MenuItemRecord> records = allMenus.stream()
+                .flatMap(Arrays::stream)
+                .filter(MenuItem::isVegetarian)
                 .map(x -> new MenuItemRecord(x.getName(),
                         x.getDescription(),
                         x.isVegetarian(),
-                        x.getPrice())).filter(MenuItemRecord::vegetarian).sorted((item1, item2) -> item1.name().compareTo(item2.name())).collect(Collectors.toList());
+                        x.getPrice()))
+                .sorted(Comparator.comparing(MenuItemRecord::name))
+                .collect(Collectors.toList());
         return records;
     }
 
     public List<MenuItemRecord> getBreakfastMenuItemsWithIterator() {
-        MenuItem[] menuItems = allMenus.getChild(0).getItems();
+        MenuItem[] menuItems = allMenus.get(0);
         List<MenuItemRecord> records = Arrays.stream(menuItems)
                 .map(x -> new MenuItemRecord(x.getName(),
                         x.getDescription(),
                         x.isVegetarian(),
-                        x.getPrice())).sorted((item1, item2) -> item1.name().compareTo(item2.name())).collect(Collectors.toList());
+                        x.getPrice()))
+                .sorted(Comparator.comparing(MenuItemRecord::name))
+                .collect(Collectors.toList());
         return records;
     }
 
     public List<MenuItemRecord> getLunchMenuItemsWithIterator() {
-        MenuItem[] menuItems = allMenus.getChild(1).getItems();
+        MenuItem[] menuItems = allMenus.get(1);
         List<MenuItemRecord> records = Arrays.stream(menuItems)
                 .map(x -> new MenuItemRecord(x.getName(),
                         x.getDescription(),
                         x.isVegetarian(),
-                        x.getPrice())).sorted((item1, item2) -> item1.name().compareTo(item2.name())).collect(Collectors.toList());
+                        x.getPrice()))
+                .sorted(Comparator.comparing(MenuItemRecord::name))
+                .collect(Collectors.toList());
         return records;
     }
 
     public List<MenuItemRecord> getDinnerMenuItemsWithIterator() {
-        MenuItem[] menuItems = allMenus.getChild(2).getItems();
+        MenuItem[] menuItems = allMenus.get(2);
         List<MenuItemRecord> records = Arrays.stream(menuItems)
                 .map(x -> new MenuItemRecord(x.getName(),
                         x.getDescription(),
                         x.isVegetarian(),
-                        x.getPrice())).sorted((item1, item2) -> item1.name().compareTo(item2.name())).collect(Collectors.toList());
+                        x.getPrice()))
+                .sorted(Comparator.comparing(MenuItemRecord::name))
+                .collect(Collectors.toList());
         return records;
-    }*/
+    }
 }
