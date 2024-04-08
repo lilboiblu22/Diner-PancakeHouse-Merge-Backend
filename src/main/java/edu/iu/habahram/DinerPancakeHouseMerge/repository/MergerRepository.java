@@ -11,9 +11,14 @@ import java.util.stream.Collectors;
 @Component
 @Repository
 public class MergerRepository {
+    MenuItem allMenus;
 
-    MenuItem allMenus = new MenuItem("ALL MENUS", "All menus combined", false, 0.0);
-
+    public MergerRepository() {
+        ArrayList<Menu> allMenus = new ArrayList<>();
+        allMenus.add(new PancakeHouseMenu());
+        allMenus.add(new DinerMenu());
+        allMenus.add(new CafeMenu());
+    }
 
     public  List<MenuItemRecord> getTheMenuItems() {
         MenuItem[] menuItems = allMenus.getItems();
@@ -36,7 +41,7 @@ public class MergerRepository {
     }
 
     public List<MenuItemRecord> getBreakfastMenuItemsWithIterator() {
-        MenuItem[] menuItems = allMenus.getChild(1).getItems();
+        MenuItem[] menuItems = allMenus.getChild(0).getItems();
         List<MenuItemRecord> records = Arrays.stream(menuItems)
                 .map(x -> new MenuItemRecord(x.getName(),
                         x.getDescription(),
@@ -46,7 +51,7 @@ public class MergerRepository {
     }
 
     public List<MenuItemRecord> getLunchMenuItemsWithIterator() {
-        MenuItem[] menuItems = allMenus.getChild(0).getItems();
+        MenuItem[] menuItems = allMenus.getChild(1).getItems();
         List<MenuItemRecord> records = Arrays.stream(menuItems)
                 .map(x -> new MenuItemRecord(x.getName(),
                         x.getDescription(),
