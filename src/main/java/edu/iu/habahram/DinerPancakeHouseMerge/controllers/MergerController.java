@@ -28,7 +28,7 @@ public class MergerController {
         List<MenuItemRecord> items = mergerRepository.getTheMenuItems();
         return items;
     }
-
+/*
     @GetMapping("/vegetarian")
     public List<MenuItemRecord> getVegetarian() {
         List<MenuItemRecord> items = mergerRepository.getVegetarianMenuItemsWithIterator();
@@ -77,5 +77,5 @@ public class MergerController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
