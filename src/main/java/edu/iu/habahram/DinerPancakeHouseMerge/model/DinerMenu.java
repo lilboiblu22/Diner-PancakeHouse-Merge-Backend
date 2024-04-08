@@ -17,17 +17,17 @@ public class DinerMenu implements Menu{
         menuItems = new MenuItem[MAX_ITEMS];
 
         addItem("Vegetarian BLT",
-                "(Fakin') Bacon with lettuce & tomato on whole wheat", true, 2.99, "Lunch");
+                "(Fakin') Bacon with lettuce & tomato on whole wheat", true, 2.99);
         addItem("BLT",
-                "Bacon with lettuce & tomato on whole wheat", false, 2.99, "Lunch");
+                "Bacon with lettuce & tomato on whole wheat", false, 2.99);
         addItem("Soup of the day",
-                "Soup of the day, with a side of potato salad", false, 3.29, "Lunch");
+                "Soup of the day, with a side of potato salad", false, 3.29);
         addItem("Hotdog",
-                "A hot dog, with saurkraut, relish, onions, topped with cheese", false, 3.05, "Lunch");
+                "A hot dog, with saurkraut, relish, onions, topped with cheese", false, 3.05);
         addItem("Steamed Veggies and Brown Rice",
-                "Steamed vegetables over brown rice", true, 3.99, "Lunch");
+                "Steamed vegetables over brown rice", true, 3.99);
         addItem("Pasta",
-                "Spaghetti with Marinara Sauce, and a slice of sourdough bread", true, 3.89, "Lunch");
+                "Spaghetti with Marinara Sauce, and a slice of sourdough bread", true, 3.89);
     }
 
     public DinerMenu(String dinerMenu, String lunch) {
@@ -36,9 +36,9 @@ public class DinerMenu implements Menu{
     }
 
     public void addItem(String name, String description,
-                        boolean vegetarian, double price, String mealType)
+                        boolean vegetarian, double price)
     {
-        MenuItem menuItem = new MenuItem(name, description, vegetarian, price, mealType);
+        MenuItem menuItem = new MenuItem(name, description, vegetarian, price);
         if (numberOfItems >= MAX_ITEMS) {
             System.err.println("Sorry, menu is full!  Can't add item to menu");
         } else {

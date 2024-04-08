@@ -23,9 +23,6 @@ public abstract class MenuComponent {
     public boolean isVegetarian() {
         throw new UnsupportedOperationException();
     }
-    public String getMealType() {
-        throw new UnsupportedOperationException();
-    }
 
     public MenuItem[] getItems() {
         throw new UnsupportedOperationException();

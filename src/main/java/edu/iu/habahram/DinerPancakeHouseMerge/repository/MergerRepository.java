@@ -6,109 +6,62 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 @Component
 @Repository
 public class MergerRepository {
+
+    MenuItem allMenus = new MenuItem("ALL MENUS", "All menus combined", false, 0.0);
+
+
     public  List<MenuItemRecord> getTheMenuItems() {
-        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0, "All");
-        allMenus.add(new DinerMenu());
-        allMenus.add(new PancakeHouseMenu());
-        allMenus.add(new CafeMenu());
-
-        CompositeIterator iterator = new CompositeIterator((Iterator<MenuItem>) allMenus.createIterator());
-        List<MenuItemRecord> records = new ArrayList<>();
-
-        while (iterator.hasNext()) {
-            MenuComponent component = iterator.next();
-            if (component instanceof MenuItem) {
-                MenuItem item = (MenuItem) component;
-                records.add(new MenuItemRecord(item.getName(), item.getDescription(), item.isVegetarian(), item.getPrice()));
-            }
-        }
+        MenuItem[] menuItems = allMenus.getItems();
+        List<MenuItemRecord> records = Arrays.stream(menuItems)
+                .map(x -> new MenuItemRecord(x.getName(),
+                        x.getDescription(),
+                        x.isVegetarian(),
+                        x.getPrice())).sorted((item1, item2) -> item1.name().compareTo(item2.name())).collect(Collectors.toList());
         return records;
     }
+
     public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
-            MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0, "All");
-            allMenus.add(new DinerMenu());
-            allMenus.add(new PancakeHouseMenu());
-            allMenus.add(new CafeMenu());
+        MenuItem[] menuItems = allMenus.getItems();
+        List<MenuItemRecord> records = Arrays.stream(menuItems)
+                .map(x -> new MenuItemRecord(x.getName(),
+                        x.getDescription(),
+                        x.isVegetarian(),
+                        x.getPrice())).filter(MenuItemRecord::vegetarian).sorted((item1, item2) -> item1.name().compareTo(item2.name())).collect(Collectors.toList());
+        return records;
+    }
 
-            CompositeIterator iterator = new CompositeIterator((Iterator<MenuItem>) allMenus.createIterator());
-            List<MenuItemRecord> records = new ArrayList<>();
-
-            while (iterator.hasNext()) {
-                MenuComponent component = iterator.next();
-                if (component instanceof MenuItem) {
-                    MenuItem item = (MenuItem) component;
-                    if (item.isVegetarian()) {
-                        records.add(new MenuItemRecord(item.getName(), item.getDescription(), item.isVegetarian(), item.getPrice()));
-                    }
-                }
-            }
-            return records;
-        }
-    // Get breakfast menu items
     public List<MenuItemRecord> getBreakfastMenuItemsWithIterator() {
-        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined", false, 0.0, "All");
-        allMenus.add(new DinerMenu());
-        allMenus.add(new PancakeHouseMenu());
-        allMenus.add(new CafeMenu());
-
-        CompositeIterator iterator = new CompositeIterator((Iterator<MenuItem>) allMenus.createIterator());
-        List<MenuItemRecord> records = new ArrayList<>();
-
-        while (iterator.hasNext()) {
-            MenuComponent component = iterator.next();
-            if (component instanceof MenuItem) {
-                MenuItem item = (MenuItem) component;
-                if (item.getMealType().equals("Breakfast")) {
-                    records.add(new MenuItemRecord(item.getName(), item.getDescription(), item.isVegetarian(), item.getPrice()));
-                }
-            }
-        }
+        MenuItem[] menuItems = allMenus.getChild(1).getItems();
+        List<MenuItemRecord> records = Arrays.stream(menuItems)
+                .map(x -> new MenuItemRecord(x.getName(),
+                        x.getDescription(),
+                        x.isVegetarian(),
+                        x.getPrice())).sorted((item1, item2) -> item1.name().compareTo(item2.name())).collect(Collectors.toList());
         return records;
     }
 
     public List<MenuItemRecord> getLunchMenuItemsWithIterator() {
-        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0, "All");
-        allMenus.add(new DinerMenu());
-        allMenus.add(new PancakeHouseMenu());
-        allMenus.add(new CafeMenu());
-
-        CompositeIterator iterator = new CompositeIterator((Iterator<MenuItem>) allMenus.createIterator());
-        List<MenuItemRecord> records = new ArrayList<>();
-
-        while (iterator.hasNext()) {
-            MenuComponent component = iterator.next();
-            if (component instanceof MenuItem) {
-                MenuItem item = (MenuItem) component;
-                if (item.getMealType().equals("Lunch")) {
-                    records.add(new MenuItemRecord(item.getName(), item.getDescription(), item.isVegetarian(), item.getPrice()));
-                }
-            }
-        }
+        MenuItem[] menuItems = allMenus.getChild(0).getItems();
+        List<MenuItemRecord> records = Arrays.stream(menuItems)
+                .map(x -> new MenuItemRecord(x.getName(),
+                        x.getDescription(),
+                        x.isVegetarian(),
+                        x.getPrice())).sorted((item1, item2) -> item1.name().compareTo(item2.name())).collect(Collectors.toList());
         return records;
     }
 
     public List<MenuItemRecord> getDinnerMenuItemsWithIterator() {
-        MenuComponent allMenus = new MenuItem("ALL MENUS", "All menus combined" , false, 0.0, "All");
-        allMenus.add(new DinerMenu());
-        allMenus.add(new PancakeHouseMenu());
-        allMenus.add(new CafeMenu());
-
-        CompositeIterator iterator = new CompositeIterator((Iterator<MenuItem>) allMenus.createIterator());
-        List<MenuItemRecord> records = new ArrayList<>();
-
-        while (iterator.hasNext()) {
-            MenuComponent component = iterator.next();
-            if (component instanceof MenuItem) {
-                MenuItem item = (MenuItem) component;
-                if (item.getMealType().equals("Dinner")) {
-                    records.add(new MenuItemRecord(item.getName(), item.getDescription(), item.isVegetarian(), item.getPrice()));
-                }
-            }
-        }
+        MenuItem[] menuItems = allMenus.getChild(2).getItems();
+        List<MenuItemRecord> records = Arrays.stream(menuItems)
+                .map(x -> new MenuItemRecord(x.getName(),
+                        x.getDescription(),
+                        x.isVegetarian(),
+                        x.getPrice())).sorted((item1, item2) -> item1.name().compareTo(item2.name())).collect(Collectors.toList());
         return records;
     }
 }

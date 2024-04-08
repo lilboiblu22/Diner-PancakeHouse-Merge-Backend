@@ -1,25 +1,21 @@
 package edu.iu.habahram.DinerPancakeHouseMerge.model;
 
-import java.util.HashMap;
-
 public class MenuItem extends MenuComponent{
     String name;
     String description;
     boolean vegetarian;
     double price;
-    String mealType;
 
     public MenuItem(String name,
                     String description,
                     boolean vegetarian,
-                    double price,
-                    String mealType)
+                    double price)
     {
         this.name = name;
         this.description = description;
         this.vegetarian = vegetarian;
         this.price = price;
-        this.mealType = mealType;
+
     }
 
     public String getName() {
@@ -36,10 +32,6 @@ public class MenuItem extends MenuComponent{
 
     public boolean isVegetarian() {
         return vegetarian;
-    }
-
-    public String getMealType() {
-        return mealType;
     }
 
     public String toString() {
