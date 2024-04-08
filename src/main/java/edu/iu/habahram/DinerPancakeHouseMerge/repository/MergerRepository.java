@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Component
 @Repository
 public class MergerRepository {
-    MenuItem allMenus;
+    ArrayList<MenuItem[]> allMenus;
 
     public MergerRepository() {
         ArrayList<MenuItem[]> allMenus = new ArrayList<>();
@@ -20,16 +20,17 @@ public class MergerRepository {
         allMenus.add(new CafeMenu("CAFE MENU", "Dinner").getItems());
     }
 
-    public  List<MenuItemRecord> getTheMenuItems() {
-        MenuItem[] menuItems = allMenus.getItems();
-        List<MenuItemRecord> records = Arrays.stream(menuItems)
+    public List<MenuItemRecord> getTheMenuItems() {
+        return allMenus.stream()
+                .flatMap(Arrays::stream)
                 .map(x -> new MenuItemRecord(x.getName(),
                         x.getDescription(),
                         x.isVegetarian(),
-                        x.getPrice())).sorted((item1, item2) -> item1.name().compareTo(item2.name())).collect(Collectors.toList());
-        return records;
+                        x.getPrice()))
+                .sorted(Comparator.comparing(MenuItemRecord::name))
+                .collect(Collectors.toList());
     }
-
+    /*
     public List<MenuItemRecord> getVegetarianMenuItemsWithIterator() {
         MenuItem[] menuItems = allMenus.getItems();
         List<MenuItemRecord> records = Arrays.stream(menuItems)
@@ -68,5 +69,5 @@ public class MergerRepository {
                         x.isVegetarian(),
                         x.getPrice())).sorted((item1, item2) -> item1.name().compareTo(item2.name())).collect(Collectors.toList());
         return records;
-    }
+    }*/
 }
